@@ -1,3 +1,5 @@
+import hashlib
+
 from input.input_directory import InputDirectory
 from app_name import APP_NAME
 from logging import getLogger
@@ -24,6 +26,14 @@ class InputFile:
     def unlink(self):
         self.__path.unlink()
         logger.debug(f'removed {self.__path}')
+
+    def md5_checksum(self):
+        md5 = hashlib.md5()
+        with open(self.path, 'rb') as f:
+            for chunk in f:
+                md5.update(chunk)
+        return md5.hexdigest()
+
 
 
 

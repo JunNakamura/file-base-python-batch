@@ -22,6 +22,7 @@ def main():
     input_directory.trigger_file.unlink()
     logger.info('start process since trigger file exists')
     input_file = InputFile(input_directory)
+    logger.info(f'md5 checksum of input file: {input_file.md5_checksum()}')
 
     work_directory = WorkDirectory()
     work_input_file = WorkInputFile(input_file, work_directory)
