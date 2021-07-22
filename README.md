@@ -28,3 +28,10 @@ python main.py
 ```
 
 test files are in nfs/test/
+
+In actual case, using crontab make help to implement periodic execution as below. 
+
+```shell
+# crontab
+*/15 * * * * cd /${path_to_repo}/batch; python main.py
+```
