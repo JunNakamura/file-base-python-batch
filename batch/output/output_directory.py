@@ -9,7 +9,7 @@ class OutputDirectory(ExistenceAssuredDirectory):
 
     def __init__(self):
         super().__init__('nfs', 'output')
-        logger.debug(f'output directory: {self.path.resolve()}')
+        logger.debug(f'output directory: {self.path}')
 
     @property
     def trigger_file(self):

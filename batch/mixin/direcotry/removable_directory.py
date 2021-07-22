@@ -17,4 +17,4 @@ class RemovableDirectory(ABC):
     def remove_if_exists(self):
         if self.path.exists():
             shutil.rmtree(self.path)
-            logger.info(f'removed {self.path.resolve()}')
+            logger.info(f'removed {self.path}')

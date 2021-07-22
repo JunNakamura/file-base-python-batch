@@ -10,7 +10,7 @@ class InputFile:
 
     def __init__(self, input_directory: InputDirectory):
         self.__path = input_directory.path.joinpath('input.csv')
-        logger.debug(f'input file: {self.__path.resolve()}')
+        logger.debug(f'input file: {self.__path}')
         assert self.__path.exists()
 
     @property
@@ -23,7 +23,7 @@ class InputFile:
 
     def unlink(self):
         self.__path.unlink()
-        logger.debug(f'removed {self.__path.resolve()}')
+        logger.debug(f'removed {self.__path}')
 
 
 

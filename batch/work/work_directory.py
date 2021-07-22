@@ -14,7 +14,7 @@ class WorkDirectory(ExistenceAssuredDirectory, RemovableDirectory):
 
     def __init__(self):
         super().__init__('tmp', 'work')
-        logger.debug(f'work directory: {self.path.resolve()}')
+        logger.debug(f'work directory: {self.path}')
 
     def move_files_to(self, backup_directory: BackupDirectory):
         target_files = [path for path in self.path.iterdir() if path.is_file()]

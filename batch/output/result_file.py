@@ -17,7 +17,7 @@ class ResultFile:
     def __init__(self, output_directory: OutputDirectory, work_directory: WorkDirectory):
         self.__path = output_directory.path.joinpath('result.csv')
         self.work_file = work_directory.path.joinpath(f'{self.__path.name}.gz')
-        logger.debug(f'result file: {self.__path.resolve()}')
+        logger.debug(f'result file: {self.__path}')
 
     @property
     def path(self):

@@ -20,7 +20,7 @@ class WorkInputFile:
             shutil.copyfileobj(source_file, work_file)
             input_file.unlink()
             logger.info(f'moved input file to work directory as {self.__path.name}')
-            logger.debug(f'work input file: {self.__path.resolve()}')
+            logger.debug(f'work input file: {self.__path}')
 
     @property
     def path(self):

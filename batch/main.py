@@ -17,7 +17,7 @@ def main():
     logger.info('check trigger file')
     input_directory = InputDirectory()
     if not input_directory.trigger_file.exists():
-        logger.info(f'trigger file({input_directory.trigger_file.resolve()}) does not exist. nothing to do.')
+        logger.info(f'trigger file({input_directory.trigger_file}) does not exist. nothing to do.')
         return
     input_directory.trigger_file.unlink()
     logger.info('start process since trigger file exists')
