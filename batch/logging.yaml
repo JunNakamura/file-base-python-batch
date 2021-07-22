@@ -13,7 +13,7 @@ handlers:
     filename: logs/application.log
     backupCount: 1
 loggers:
-  sample:
+  file_base_batch:
     level: DEBUG
     handlers: [file, console]
     propagate: no

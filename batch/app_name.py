@@ -1,1 +1,1 @@
-APP_NAME = 'sample'
+APP_NAME = 'file_base_batch'
