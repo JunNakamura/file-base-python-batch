@@ -6,17 +6,15 @@ handlers:
   console:
     class: logging.StreamHandler
     formatter: simple
-    level: INFO
     stream: ext://sys.stdout
   file:
     class: logging.handlers.RotatingFileHandler
-    level: INFO
     formatter: simple
     filename: logs/application.log
     backupCount: 1
 loggers:
   sample:
-    level: INFO
+    level: DEBUG
     handlers: [file, console]
     propagate: no
 root:

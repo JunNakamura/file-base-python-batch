@@ -2,12 +2,14 @@ from pathlib import Path
 import yaml
 from logging import config, getLogger
 from app_name import APP_NAME
+from input.input_directory import InputDirectory
 
 logger = getLogger(APP_NAME).getChild(__name__)
 
 
 def main():
     logger.info('start sample batch')
+    input_directory = InputDirectory()
 
 
 if __name__ == '__main__':
