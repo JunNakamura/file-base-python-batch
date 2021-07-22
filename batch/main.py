@@ -3,7 +3,9 @@ import yaml
 from logging import config, getLogger
 from app_name import APP_NAME
 from input.input_directory import InputDirectory
+from input.input_file import InputFile
 from work.work_directory import WorkDirectory
+from work.work_input_file import WorkInputFile
 
 logger = getLogger(APP_NAME).getChild(__name__)
 
@@ -11,7 +13,9 @@ logger = getLogger(APP_NAME).getChild(__name__)
 def main():
     logger.info('start sample batch')
     input_directory = InputDirectory()
+    input_file = InputFile(input_directory)
     work_directory = WorkDirectory()
+    work_input_file = WorkInputFile(input_file, work_directory)
     logger.info('processed')
     work_directory.remove_if_exists()
 
