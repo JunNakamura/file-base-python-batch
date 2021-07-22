@@ -2,6 +2,7 @@ from pathlib import Path
 import yaml
 from logging import config, getLogger
 from app_name import APP_NAME
+from backup.backup_directory import BackupDirectory
 from input.input_directory import InputDirectory
 from input.input_file import InputFile
 from work.work_directory import WorkDirectory
@@ -21,6 +22,10 @@ def main():
     input_file = InputFile(input_directory)
     work_directory = WorkDirectory()
     work_input_file = WorkInputFile(input_file, work_directory)
+
+    backup_directory = BackupDirectory()
+    work_directory.move_files_to(backup_directory)
+
     work_directory.remove_if_exists()
 
 
