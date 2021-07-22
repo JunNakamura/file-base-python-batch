@@ -11,12 +11,16 @@ logger = getLogger(APP_NAME).getChild(__name__)
 
 
 def main():
-    logger.info('start sample batch')
+    logger.info('check trigger file')
     input_directory = InputDirectory()
+    if not input_directory.trigger_file.exists():
+        logger.info(f'trigger file({input_directory.trigger_file.resolve()}) does not exist. nothing to do.')
+        return
+    input_directory.trigger_file.unlink()
+    logger.info('start process since trigger file exists')
     input_file = InputFile(input_directory)
     work_directory = WorkDirectory()
     work_input_file = WorkInputFile(input_file, work_directory)
-    logger.info('processed')
     work_directory.remove_if_exists()
 
 
