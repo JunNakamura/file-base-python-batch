@@ -5,6 +5,8 @@ from app_name import APP_NAME
 from backup.backup_directory import BackupDirectory
 from input.input_directory import InputDirectory
 from input.input_file import InputFile
+from output.output_directory import OutputDirectory
+from output.result_file import ResultFile
 from work.work_directory import WorkDirectory
 from work.work_input_file import WorkInputFile
 
@@ -20,12 +22,19 @@ def main():
     input_directory.trigger_file.unlink()
     logger.info('start process since trigger file exists')
     input_file = InputFile(input_directory)
+
     work_directory = WorkDirectory()
     work_input_file = WorkInputFile(input_file, work_directory)
 
+    output_directory = OutputDirectory()
+    output_directory.trigger_file.unlink(missing_ok=True)
+
+    result_file = ResultFile(output_directory, work_directory)
+    result_file.create(work_input_file)
+    output_directory.trigger_file.touch()
+
     backup_directory = BackupDirectory()
     work_directory.move_files_to(backup_directory)
-
     work_directory.remove_if_exists()
 
 
