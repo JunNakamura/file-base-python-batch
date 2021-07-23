@@ -4,13 +4,13 @@ import math
 import shutil
 
 from decorator.logging import timed
-from output.output_directory import OutputDirectory
-from work.work_directory import WorkDirectory
-from work.work_entry_file import WorkEntryFile
+from domain.output.output_directory import OutputDirectory
+from domain.work.work_directory import WorkDirectory
+from domain.work.work_entry_file import WorkEntryFile
 from app_name import APP_NAME
 from logging import getLogger
 
-from work.work_order_history_file import WorkOrderHistoryFile
+from domain.work.work_order_history_file import WorkOrderHistoryFile
 
 logger = getLogger(APP_NAME).getChild(__name__)
 

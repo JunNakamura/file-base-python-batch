@@ -1,5 +1,5 @@
-from input.input_directory import InputDirectory
-from input.input_file import InputFile
+from domain.input.input_directory import InputDirectory
+from domain.input.input_file import InputFile
 
 
 class OrderHistoryFile(InputFile):

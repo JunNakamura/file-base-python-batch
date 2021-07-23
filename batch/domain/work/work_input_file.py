@@ -1,7 +1,7 @@
 from typing import TypeVar, Generic
 
-from input.input_file import InputFile
-from work.work_directory import WorkDirectory
+from domain.input import InputFile
+from domain.work.work_directory import WorkDirectory
 import shutil
 import gzip
 from app_name import APP_NAME

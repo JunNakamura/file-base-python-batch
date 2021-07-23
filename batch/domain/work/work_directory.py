@@ -1,6 +1,6 @@
 import shutil
 
-from backup.backup_directory import BackupDirectory
+from domain.backup.backup_directory import BackupDirectory
 from mixin.direcotry.existence_assured_directory import ExistenceAssuredDirectory
 from app_name import APP_NAME
 from logging import getLogger

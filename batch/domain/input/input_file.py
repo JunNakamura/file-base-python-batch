@@ -1,6 +1,6 @@
 import hashlib
 from abc import ABC
-from input.input_directory import InputDirectory
+from domain.input.input_directory import InputDirectory
 from app_name import APP_NAME
 from logging import getLogger
 
