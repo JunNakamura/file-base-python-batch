@@ -3,7 +3,7 @@ from decorator.logging import timed
 from domain.input.entry_file import EntryFile
 from domain.input.input_directory import InputDirectory
 from domain.input.order_history_file import OrderHistoryFile
-from domain.batch.batch import BatchWithFileLock
+from batch.batch import BatchWithFileLock
 from app_name import APP_NAME
 from logging import getLogger
 
