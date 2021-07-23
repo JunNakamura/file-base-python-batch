@@ -3,10 +3,10 @@ import csv
 import math
 import shutil
 
+from decorator.logging import timed
 from output.output_directory import OutputDirectory
 from work.work_directory import WorkDirectory
 from work.work_entry_file import WorkEntryFile
-from work.work_input_file import WorkInputFile
 from app_name import APP_NAME
 from logging import getLogger
 
@@ -26,6 +26,7 @@ class ResultFile:
     def path(self):
         return self.__path
 
+    @timed
     def create(self, work_order_history_file: WorkOrderHistoryFile, work_entry_file: WorkEntryFile):
         self.write_to_work(work_order_history_file, work_entry_file)
         self.copy_to_actual()
