@@ -12,7 +12,7 @@ class InputFile(ABC):
 
     def __init__(self, input_directory: InputDirectory, file_name: str):
         self.__path = input_directory.path.joinpath(file_name)
-        logger.debug(f'input file: {self.__path}')
+        logger.info(f'{self.__path}')
         assert self.__path.exists()
 
     @property

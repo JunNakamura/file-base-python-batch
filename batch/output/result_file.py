@@ -20,7 +20,7 @@ class ResultFile:
     def __init__(self, output_directory: OutputDirectory, work_directory: WorkDirectory):
         self.__path = output_directory.path.joinpath('result.csv')
         self.work_file = work_directory.path.joinpath(f'{self.__path.name}.gz')
-        logger.debug(f'result file: {self.__path}')
+        logger.info(f'result file: {self.__path}')
 
     @property
     def path(self):
@@ -35,7 +35,6 @@ class ResultFile:
         with gzip.open(work_order_history_file.path, 'rt', newline='') as order_history_file, gzip.open(self.work_file, 'wt', newline='') as target_file:
             with gzip.open(work_entry_file.path, 'rt', newline='') as entry_file:
                 entries = {line for line in entry_file.read().splitlines()}
-                logger.debug(entries)
                 reader = csv.DictReader(order_history_file, fieldnames=['user_id', 'purchase_amount'])
                 writer = csv.DictWriter(target_file, fieldnames=['user_id', 'point'])
                 for row in reader:

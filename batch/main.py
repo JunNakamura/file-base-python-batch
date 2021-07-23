@@ -17,7 +17,6 @@ logger = getLogger(APP_NAME).getChild(__name__)
 
 
 def main():
-    logger.info('check trigger file')
     input_directory = InputDirectory()
     if not input_directory.trigger_file.exists():
         logger.info(f'trigger file({input_directory.trigger_file}) does not exist. nothing to do.')

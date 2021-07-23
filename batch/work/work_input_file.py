@@ -22,9 +22,9 @@ class WorkInputFile(Generic[T]):
         self.__path = work_directory.path.joinpath(f'{input_file.name}.gz')
         with open(input_file.path, 'rb') as source_file, gzip.open(self.__path, 'wb') as work_file:
             shutil.copyfileobj(source_file, work_file)
+            logger.debug(f'copied {input_file.name} with gzip compression')
             input_file.unlink()
-            logger.info(f'moved input file to work directory as {self.__path.name}')
-            logger.debug(f'work input file: {self.__path}')
+            logger.info(f'moved {input_file.name} to work directory as {self.__path}')
 
     @property
     def path(self):

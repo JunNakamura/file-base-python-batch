@@ -8,10 +8,11 @@ handlers:
     formatter: simple
     stream: ext://sys.stdout
   file:
-    class: logging.handlers.RotatingFileHandler
+    class: logging.handlers.TimedRotatingFileHandler
     formatter: simple
     filename: logs/application.log
-    backupCount: 1
+    when: MIDNIGHT
+    backupCount: 5
 loggers:
   file_base_batch:
     level: DEBUG
