@@ -1,3 +1,5 @@
+from typing import TypeVar, Generic
+
 from input.input_file import InputFile
 from work.work_directory import WorkDirectory
 import shutil
@@ -7,10 +9,12 @@ from logging import getLogger
 
 logger = getLogger(APP_NAME).getChild(__name__)
 
+T = TypeVar('T', bound=InputFile)
 
-class WorkInputFile:
 
-    def __init__(self, input_file: InputFile, work_directory: WorkDirectory):
+class WorkInputFile(Generic[T]):
+
+    def __init__(self, input_file: T, work_directory: WorkDirectory):
         """
         copy input file to work directory with gzip compression,
         then delete original file

@@ -3,12 +3,15 @@ import yaml
 from logging import config, getLogger
 from app_name import APP_NAME
 from backup.backup_directory import BackupDirectory
+from input.entry_file import EntryFile
 from input.input_directory import InputDirectory
-from input.input_file import InputFile
+from input.order_history_file import OrderHistoryFile
 from output.output_directory import OutputDirectory
 from output.result_file import ResultFile
 from work.work_directory import WorkDirectory
+from work.work_entry_file import WorkEntryFile
 from work.work_input_file import WorkInputFile
+from work.work_order_history_file import WorkOrderHistoryFile
 
 logger = getLogger(APP_NAME).getChild(__name__)
 
@@ -21,17 +24,21 @@ def main():
         return
     input_directory.trigger_file.unlink()
     logger.info('start process since trigger file exists')
-    input_file = InputFile(input_directory)
-    logger.info(f'md5 checksum of input file: {input_file.md5_checksum()}')
+    order_history_file = OrderHistoryFile(input_directory)
+    entry_file = EntryFile(input_directory)
+    input_files = [order_history_file, entry_file]
+    for input_file in input_files:
+        logger.info(f'checksum of {input_file.name}: {input_file.md5_checksum()}')
 
     work_directory = WorkDirectory()
-    work_input_file = WorkInputFile(input_file, work_directory)
+    work_order_history_file = WorkOrderHistoryFile(order_history_file, work_directory)
+    work_entry_file = WorkEntryFile(entry_file, work_directory)
 
     output_directory = OutputDirectory()
     output_directory.trigger_file.unlink(missing_ok=True)
 
     result_file = ResultFile(output_directory, work_directory)
-    result_file.create(work_input_file)
+    result_file.create(work_order_history_file, work_entry_file)
     output_directory.trigger_file.touch()
 
     backup_directory = BackupDirectory()

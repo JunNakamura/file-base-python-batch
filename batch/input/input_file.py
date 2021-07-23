@@ -1,5 +1,5 @@
 import hashlib
-
+from abc import ABC
 from input.input_directory import InputDirectory
 from app_name import APP_NAME
 from logging import getLogger
@@ -8,10 +8,10 @@ from logging import getLogger
 logger = getLogger(APP_NAME).getChild(__name__)
 
 
-class InputFile:
+class InputFile(ABC):
 
-    def __init__(self, input_directory: InputDirectory):
-        self.__path = input_directory.path.joinpath('input.csv')
+    def __init__(self, input_directory: InputDirectory, file_name: str):
+        self.__path = input_directory.path.joinpath(file_name)
         logger.debug(f'input file: {self.__path}')
         assert self.__path.exists()
 
