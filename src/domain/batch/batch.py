@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
-from decorator.logging import timed
-from file_lock import PIDFileLock
 from app_name import APP_NAME
 from logging import getLogger
+
+from domain.batch.file_lock import PIDFileLock
 
 logger = getLogger(APP_NAME).getChild(__name__)
 

@@ -2,7 +2,7 @@ from pathlib import Path
 import yaml
 from logging import config, getLogger
 from app_name import APP_NAME
-from file_base_batch import FileBaseBatch
+from domain.batch.file_base_batch import FileBaseBatch
 
 logger = getLogger(APP_NAME).getChild(__name__)
 

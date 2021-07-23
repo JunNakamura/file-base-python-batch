@@ -2,16 +2,16 @@ from domain.backup.backup_directory import BackupDirectory
 from decorator.logging import timed
 from domain.input.entry_file import EntryFile
 from domain.input.input_directory import InputDirectory
-from domain.input import OrderHistoryFile
-from mixin.batch import BatchWithFileLock
+from domain.input.order_history_file import OrderHistoryFile
+from domain.batch.batch import BatchWithFileLock
 from app_name import APP_NAME
 from logging import getLogger
 
 from domain.output.output_directory import OutputDirectory
 from domain.output.result_file import ResultFile
-from domain.work import WorkDirectory
-from domain.work import WorkEntryFile
-from domain.work import WorkOrderHistoryFile
+from domain.work.work_directory import WorkDirectory
+from domain.work.work_entry_file import WorkEntryFile
+from domain.work.work_order_history_file import WorkOrderHistoryFile
 
 logger = getLogger(APP_NAME).getChild(__name__)
 

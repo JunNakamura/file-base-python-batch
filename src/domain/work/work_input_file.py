@@ -1,6 +1,6 @@
 from typing import TypeVar, Generic
 
-from domain.input import InputFile
+from domain.input.input_file import InputFile
 from domain.work.work_directory import WorkDirectory
 import shutil
 import gzip
