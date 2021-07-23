@@ -127,6 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-batch/nfs/output
-batch/nfs/input
-batch/tmp
+src/nfs/output
+src/nfs/input
+src/tmp

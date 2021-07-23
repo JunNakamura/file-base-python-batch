@@ -33,5 +33,5 @@ In actual case, using crontab make help to implement periodic execution as below
 
 ```shell
 # crontab
-*/15 * * * * cd /${path_to_repo}/batch; python main.py
+*/15 * * * * cd /${path_to_repo}/src; python main.py
 ```

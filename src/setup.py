@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(
-    name="file-base-batch",
+    name="file-base-src",
     version="1.0.0",
     install_requires=[
         "PyYaml",
