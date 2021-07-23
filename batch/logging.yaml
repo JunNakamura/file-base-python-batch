@@ -2,6 +2,8 @@ version: 1
 formatters:
   simple:
     format: '[%(asctime)s]  [%(process)d]  [%(levelname)s] [%(name)s]  %(message)s'
+  timed:
+    format: '[%(asctime)s]  [%(process)d]  [%(levelname)s]  %(message)s'
 handlers:
   console:
     class: logging.StreamHandler
@@ -13,11 +15,21 @@ handlers:
     filename: logs/application.log
     when: MIDNIGHT
     backupCount: 5
+  timed_file:
+    class: logging.handlers.TimedRotatingFileHandler
+    formatter: timed
+    filename: logs/elapsed_time.log
+    when: MIDNIGHT
+    backupCount: 5
 loggers:
   file_base_batch:
     level: DEBUG
     handlers: [file, console]
     propagate: no
+  file_base_batch.decorator.logging:
+    level: INFO
+    handlers: [timed_file]
+    propagate: yes
 root:
   level: INFO
   handlers: [file]
